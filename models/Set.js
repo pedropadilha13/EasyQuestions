@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 
-const QuestionSchema = mongoose.model('Question');
-const UserSchema = mongoose.model('User');
-
 const SetSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -20,7 +17,16 @@ const SetSchema = new mongoose.Schema({
   created: {
     type: Date,
     default: Date.now
+  },
+  updated: {
+    type: Date,
+    default: Date.now
   }
+});
+
+SetSchema.pre('save', function (next) {
+  this.updated = Date.now();
+  return next;
 });
 
 module.exports = mongoose.model('Set', SetSchema);

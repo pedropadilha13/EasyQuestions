@@ -3,7 +3,7 @@ const { requireAuth } = require('../middlewares');
 
 const router = express.Router();
 
-router.get('/', requireAuth, (req, res) => {
+router.get('/', (req, res) => {
   return res.json(req.user);
 });
 

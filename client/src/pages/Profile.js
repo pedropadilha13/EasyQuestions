@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+// import { NotificationManager } from 'react-notifications';
 
-import { fetchCurrentUser, updateProfile } from '../../actions';
+import { fetchCurrentUser, updateProfile } from '../actions';
 
-import UserForm from '../forms/UserForm';
+import UserForm from '../components/forms/UserForm';
 
 import Container from 'react-bootstrap/Container';
-import Spinner from '../common/Spinner';
-import Alert from 'react-bootstrap/Alert';
 
 class Profile extends Component {
   state = {};
 
   componentDidMount() {
+    console.log('profile mounted');
     this.props.fetchCurrentUser();
+  }
+
+  componentWillUnmount() {
+    console.log('profile will unmount');
   }
 
   handleSubmit = newValues => {
@@ -22,21 +25,16 @@ class Profile extends Component {
   };
 
   render() {
-    if (this.props.auth) {
-      return (
-        <Container className='w-25 mt-15'>
-          <h1 className='text-center'>Profile</h1>
-          <UserForm
-            initialValues={this.props.auth}
-            onSubmit={this.handleSubmit}
-          />
-        </Container>
-      );
-    } else if (this.props.auth === false) {
-      return <Redirect to='/' />;
-    } else {
-      return <Spinner />;
-    }
+    console.log('PROFILE RENDEEEEEEEER');
+    return (
+      <Container className='w-25 mt-15'>
+        <h1 className='text-center'>Profile</h1>
+        <UserForm
+          initialValues={this.props.auth}
+          onSubmit={this.handleSubmit}
+        />
+      </Container>
+    );
   }
 }
 
