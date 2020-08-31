@@ -11,6 +11,8 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Dashboard from './pages/Dashboard';
 
+import Sets from './pages/Sets';
+
 import './css/style.css';
 
 class App extends React.Component {
@@ -20,9 +22,10 @@ class App extends React.Component {
       <BrowserRouter history={history}>
         <Header />
         <Switch>
-          <Route path='/' exact component={Home} />
           <Route path='/profile' exact component={Profile} />
           <Route path='/dashboard' exact component={Dashboard} />
+          <Route path='/sets' exact component={Sets} />
+          <Route path='/' exact component={Home} />
         </Switch>
         {/* <Footer /> */}
       </BrowserRouter>

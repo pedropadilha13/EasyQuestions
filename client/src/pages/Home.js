@@ -15,8 +15,8 @@ class Home extends React.Component {
       case true:
         return (
           <div className='m-auto w-auto'>
-            <Button as={Link} variant='primary' size='lg' to='profile'>
-              Criar novo Set
+            <Button as={Link} variant='primary' size='lg' to='/sets'>
+              Ir para meus Sets
             </Button>
           </div>
         );

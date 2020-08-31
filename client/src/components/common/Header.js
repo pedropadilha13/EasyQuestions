@@ -20,6 +20,23 @@ class Header extends React.Component {
     this.props.fetchCurrentUser();
   }
 
+  renderLinks() {
+    if (this.props.auth.isSignedIn === true) {
+      return (
+        <Nav>
+          <Nav.Link href='#' target='_blank' rel='noopener noreferrer'>
+            Link somewhere
+          </Nav.Link>
+          <Nav.Link as={Link} to='/sets'>
+            Sets
+          </Nav.Link>
+        </Nav>
+      );
+    } else {
+      return null;
+    }
+  }
+
   renderRightNav() {
     switch (this.props.auth.isSignedIn) {
       case true:
@@ -74,11 +91,7 @@ class Header extends React.Component {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='navbar' />
         <Navbar.Collapse id='navbar'>
-          <Nav className='mr-auto'>
-            <Nav.Link href='#' target='_blank' rel='noopener noreferrer'>
-              Link somewhere
-            </Nav.Link>
-          </Nav>
+          <Nav className='mr-auto'>{this.renderLinks()}</Nav>
           {this.renderRightNav()}
         </Navbar.Collapse>
       </Navbar>
